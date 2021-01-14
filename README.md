@@ -1,33 +1,48 @@
+# bitbucket-pipelines front-end-build
+
 [![logo](./logo.jpg)](https://inforit.nl)
 
-# base
+Docker image to automate front-end builds on bitbucket (and local)
 
-Our base docker image
+Comes preinstalled with Firefox and Chromium for (unit)-testing during build.
+Also sonar-scanner is installed to enable sonar analyzing 
 
-# Instructions:
+## Instructions
 
 1. update dockerfile
 2. build local version:
 
+    ```sh
+    npm run build
     ```
-    docker build -t inforitnl/imagename .
-    ```
+
 3. push new version to dockerhub:
 
+    ```sh
+    npm run push
     ```
-    docker push inforitnl/imagename:latest
-    ```
+
 4. tag and push again (optional but recommended):
 
+    ```sh
+    npm run publish
     ```
-    docker tag inforitnl/imagename inforitnl/imagename:1
-    docker push inforitnl/imagename:1
-    ```
 
-# Usage
+## Usage
 
+```sh
+image: inforitnl/front-end-build
+
+pipelines:
+  default:
+    - step:
+        script:
+          - /front-end-build.sh
 ```
-FROM inforitnl/base
 
+## scripts
 
-```
+| Command | Description                         |
+| ------- | ----------------------------------- |
+| build   | build the container with latest tag |
+| push    | pushes the container                |
