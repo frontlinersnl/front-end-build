@@ -1,22 +1,22 @@
 {
-    "name": "front-end-build",
-    "version": "1.0.0",
-    "description": "[![logo](./logo.jpg)](https://inforit.nl)",
-    "main": "index.js",
-    "scripts": {
-        "build": "docker build -t inforitnl/front-end-build .",
-        "tag": "docker tag inforitnl/front-end-build",
-        "push": "docker push inforitnl/front-end-build",
-        "publish": "DOCKER_PROD_TAG=$(cat package.json | grep version | head -1  | awk -F: '{ print $2}' | sed 's/[\",]//g' | tr -d '[[:space:]]') && docker build -t inforitnl/front-end-build . && docker tag inforitnl/front-end-build inforitnl/front-end-build:latest && docker tag inforitnl/front-end-build inforitnl/front-end-build:$DOCKER_PROD_TAG  && docker push inforitnl/front-end-build:latest && docker push inforitnl/front-end-build:$DOCKER_PROD_TAG "
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Inforitnl/front-end-build.git"
-    },
-    "author": "Rick van Lieshout <info@rickvanlieshout.com> (http://rickvanlieshout.com)",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/Inforitnl/front-end-build/issues"
-    },
-    "homepage": "https://github.com/Inforitnl/front-end-build#readme"
+  "name": "front-end-build",
+  "version": "1.0.1",
+  "description": "[![logo](./logo.jpg)](https://inforit.nl)",
+  "main": "index.js",
+  "scripts": {
+    "build": "docker build -t inforitnl/front-end-build .",
+    "tag": "docker tag inforitnl/front-end-build",
+    "push": "docker push inforitnl/front-end-build",
+    "publish": "DOCKER_PROD_TAG=$(cat package.json | grep version | head -1  | awk -F: '{ print $2}' | sed 's/[\",]//g' | tr -d '[[:space:]]') && docker build -t inforitnl/front-end-build . && docker tag inforitnl/front-end-build inforitnl/front-end-build:latest && docker tag inforitnl/front-end-build inforitnl/front-end-build:$DOCKER_PROD_TAG  && docker push inforitnl/front-end-build:latest && docker push inforitnl/front-end-build:$DOCKER_PROD_TAG "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Inforitnl/front-end-build.git"
+  },
+  "author": "Rick van Lieshout <info@rickvanlieshout.com> (http://rickvanlieshout.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Inforitnl/front-end-build/issues"
+  },
+  "homepage": "https://github.com/Inforitnl/front-end-build#readme"
 }
