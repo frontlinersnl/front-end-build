@@ -1,4 +1,4 @@
-FROM node:14.15.4-buster
+FROM node:16.10.0-buster
 
 # install Chromium for (unit)-testing during build-phase
 RUN apt-get update && \
@@ -11,7 +11,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # install sonar-scanner 
-ENV SONAR_VERSION="4.5.0.2216-linux"
+ENV SONAR_VERSION="4.6.2.2472-linux"
 COPY sonar-scanner-cli-$SONAR_VERSION.zip /var/opt/
 RUN unzip /var/opt/sonar-scanner-cli-$SONAR_VERSION.zip -d /var/opt && \
     rm /var/opt/sonar-scanner-cli-$SONAR_VERSION.zip
