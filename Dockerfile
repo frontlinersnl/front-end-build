@@ -8,7 +8,7 @@ RUN apt-get update && \
 
 # install Firefox for (unit)-testing during build-phase
 RUN apt-get update && \
-  apt-get install -y --no-install-recommends 'firefox-esr=78.14.0esr-1~deb10u1' && \
+  apt-get install -y --no-install-recommends 'firefox-esr=91.12.0esr-1~deb10u1' && \
   rm -rf /var/lib/apt/lists/*
 
 # install sonar-scanner
@@ -17,6 +17,11 @@ COPY sonar-scanner-cli-$SONAR_VERSION.zip /var/opt/
 RUN unzip /var/opt/sonar-scanner-cli-$SONAR_VERSION.zip -d /var/opt && \
   rm /var/opt/sonar-scanner-cli-$SONAR_VERSION.zip
 ENV PATH="$PATH:/var/opt/sonar-scanner-$SONAR_VERSION/bin"
+
+# install docker-compose
+RUN apt-get update && \
+  apt-get install -y --no-install-recommends ca-certificates docker-compose gnupg2 pass && \
+  rm -rf /var/lib/apt/lists/*
 
 # copy build scripts into container
 RUN mkdir /code
