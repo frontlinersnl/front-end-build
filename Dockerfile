@@ -20,7 +20,7 @@ ENV PATH="$PATH:/var/opt/sonar-scanner-$SONAR_VERSION/bin"
 
 # install docker-compose
 RUN apt-get update && \
-  apt-get install -y --no-install-recommends ca-certificates docker-compose && \
+  apt-get install -y --no-install-recommends ca-certificates docker-compose gnupg2 pass && \
   rm -rf /var/lib/apt/lists/*
 
 # copy build scripts into container
