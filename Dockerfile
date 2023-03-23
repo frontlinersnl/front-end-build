@@ -23,6 +23,13 @@ RUN apt-get update && \
   apt-get install -y --no-install-recommends ca-certificates docker-compose gnupg2 pass && \
   rm -rf /var/lib/apt/lists/*
 
+# install testrail-cli
+RUN apt-get update && \
+  apt-get install -y --no-install-recommends python3-pip && \
+  apt-get install python3-setuptools && \
+  pip3 install trcli && \
+  rm -rf /var/lib/apt/lists/*
+
 # copy build scripts into container
 RUN mkdir /code
 WORKDIR /code
