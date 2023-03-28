@@ -1,4 +1,4 @@
-FROM node:16.18.1-buster
+FROM node:19.7-buster
 
 # install Chromium for (unit)-testing during build-phase
 RUN apt-get update && \
