@@ -1,14 +1,19 @@
-FROM node:19.7-buster
+FROM node:19.7-bullseye-slim
+
+# install build dependencies
+RUN apt-get update && \
+  apt-get install -y --no-install-recommends 'unzip' && \
+  rm -rf /var/lib/apt/lists/*
 
 # install Chromium for (unit)-testing during build-phase
 RUN apt-get update && \
   apt-get install -y --no-install-recommends libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb && \
-  apt-get install -y --no-install-recommends 'chromium=90.0.4430.212-1~deb10u1' && \
+  apt-get install -y --no-install-recommends 'chromium' && \
   rm -rf /var/lib/apt/lists/*
 
 # install Firefox for (unit)-testing during build-phase
 RUN apt-get update && \
-  apt-get install -y --no-install-recommends 'firefox-esr=91.12.0esr-1~deb10u1' && \
+  apt-get install -y --no-install-recommends 'firefox-esr' && \
   rm -rf /var/lib/apt/lists/*
 
 # install sonar-scanner
