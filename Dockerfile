@@ -1,14 +1,19 @@
-FROM node:19.7-buster
+FROM node:19.7-bullseye-slim
+
+# install build dependencies
+RUN apt-get update && \
+  apt-get install -y --no-install-recommends 'unzip' && \
+  rm -rf /var/lib/apt/lists/*
 
 # install Chromium for (unit)-testing during build-phase
 RUN apt-get update && \
   apt-get install -y --no-install-recommends libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb && \
-  apt-get install -y --no-install-recommends 'chromium=90.0.4430.212-1~deb10u1' && \
+  apt-get install -y --no-install-recommends 'chromium' && \
   rm -rf /var/lib/apt/lists/*
 
 # install Firefox for (unit)-testing during build-phase
 RUN apt-get update && \
-  apt-get install -y --no-install-recommends 'firefox-esr=91.12.0esr-1~deb10u1' && \
+  apt-get install -y --no-install-recommends 'firefox-esr' && \
   rm -rf /var/lib/apt/lists/*
 
 # install sonar-scanner
@@ -23,10 +28,18 @@ RUN apt-get update && \
   apt-get install -y --no-install-recommends ca-certificates docker-compose gnupg2 pass && \
   rm -rf /var/lib/apt/lists/*
 
-# install testrail-cli
+# install python 3.10, link to python3 and install trcli
 RUN apt-get update && \
-  apt-get install -y --no-install-recommends python3-pip && \
-  apt-get install python3-setuptools && \
+  apt-get install --no-install-recommends -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev && \
+  wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz && \
+  tar -xf Python-3.10.*.tgz && \
+  cd Python-3.10.*/ && \
+  ./configure --enable-optimizations && \
+  make -j 4 && \
+  make altinstall && \
+  update-alternatives --install /usr/bin/python3 python3 /usr/local/bin/python3.10 1 && \
+  update-alternatives --install /usr/bin/pip3 pip3 /usr/local/bin/pip3.10 1 && \
+  cd .. && rm -rf Python-3.10* && \
   pip3 install trcli && \
   rm -rf /var/lib/apt/lists/*
 
