@@ -1,4 +1,4 @@
-FROM node:19.7-buster
+FROM node:19.7-bullseye-slim
 
 # install Chromium for (unit)-testing during build-phase
 RUN apt-get update && \
