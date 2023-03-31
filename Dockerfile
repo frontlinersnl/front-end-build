@@ -1,4 +1,4 @@
-FROM node:19.7-bullseye-slim
+FROM node:16.20.0-buster-slim
 
 # install build dependencies
 RUN apt-get update && \
