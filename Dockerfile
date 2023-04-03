@@ -1,4 +1,4 @@
-FROM node:16.20.0-buster-slim
+FROM node:16.20.0-buster
 
 # install build dependencies
 RUN apt-get update && \
