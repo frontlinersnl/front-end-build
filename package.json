@@ -1,6 +1,6 @@
 {
   "name": "front-end-build",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "[![logo](./logo.jpg)](https://inforit.nl)",
   "main": "index.js",
   "scripts": {
