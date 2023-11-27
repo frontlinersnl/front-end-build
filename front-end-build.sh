@@ -26,14 +26,3 @@ then
       echo "@inforit scope already registered"
   fi
 fi
-
-if [ -n "$MYGET_DOMAIN_ACCESS_TOKEN" ]
-then
-  # add inforit domain scope
-  if [[ $(cat ~/.npmrc | grep @inforit-domain: | wc -l) -eq "0" ]]; then
-      echo -e "\n@inforit-domain:registry=https://www.myget.org/F/inforit-domain/npm/\n//www.myget.org/F/inforit-domain/npm/:_authToken=$MYGET_DOMAIN_ACCESS_TOKEN" >> ~/.npmrc
-      echo "@inforit-domain scope sucesfully registered"
-  else
-      echo "@inforit-domain already registered"
-  fi
-fi
