@@ -1,7 +1,7 @@
 {
   "name": "front-end-build",
   "version": "4.0.0",
-  "description": "[![logo](./logo.jpg)](https://inforit.nl)",
+  "description": "[![logo](./logo.jpg)](https://frontliners.nl)",
   "main": "index.js",
   "scripts": {
     "build": "docker build -t frontlinersnl/front-end-build .",

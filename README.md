@@ -1,6 +1,6 @@
 # bitbucket-pipelines front-end-build
 
-[![logo](./logo.jpg)](https://inforit.nl)
+[![logo](./logo.jpg)](https://frontliners.nl)
 
 Docker image to automate front-end builds on bitbucket (and local)
 
