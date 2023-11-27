@@ -4,10 +4,10 @@
   "description": "[![logo](./logo.jpg)](https://frontliners.nl)",
   "main": "index.js",
   "scripts": {
-    "build": "docker build -t frontlinersnl/front-end-build .",
-    "tag": "docker tag frontlinersnl/front-end-build",
-    "push": "docker push frontlinersnl/front-end-build",
-    "publish": "DOCKER_PROD_TAG=$(cat package.json | grep version | head -1  | awk -F: '{ print $2}' | sed 's/[\",]//g' | tr -d '[[:space:]]') && docker build -t frontlinersnl/front-end-build . && docker tag frontlinersnl/front-end-build frontlinersnl/front-end-build:latest && docker tag frontlinersnl/front-end-build frontlinersnl/front-end-build:$DOCKER_PROD_TAG  && docker push frontlinersnl/front-end-build:latest && docker push frontlinersnl/front-end-build:$DOCKER_PROD_TAG "
+    "build": "docker build -t inforitnl/front-end-build .",
+    "tag": "docker tag inforitnl/front-end-build",
+    "push": "docker push inforitnl/front-end-build",
+    "publish": "DOCKER_PROD_TAG=$(cat package.json | grep version | head -1  | awk -F: '{ print $2}' | sed 's/[\",]//g' | tr -d '[[:space:]]') && docker build -t inforitnl/front-end-build . && docker tag inforitnl/front-end-build inforitnl/front-end-build:latest && docker tag inforitnl/front-end-build inforitnl/front-end-build:$DOCKER_PROD_TAG  && docker push inforitnl/front-end-build:latest && docker push inforitnl/front-end-build:$DOCKER_PROD_TAG "
   },
   "repository": {
     "type": "git",

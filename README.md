@@ -31,7 +31,7 @@ Also sonar-scanner is installed to enable sonar analyzing
 ## Usage
 
 ```sh
-image: frontlinersnl/front-end-build
+image: inforitnl/front-end-build
 
 pipelines:
   default:
