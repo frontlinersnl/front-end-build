@@ -7,7 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [4.0.0] - 2023-11-27
 
 - Updated various internally used packages:
-  - Java from 11 to 17
   - node version from 16 to 20
   - other dependencies like sonar, python
 - Rename `Inforit` with `Frontliners`

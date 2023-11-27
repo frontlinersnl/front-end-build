@@ -5,11 +5,6 @@ RUN apt-get update && \
   apt-get install -y --no-install-recommends 'unzip' && \
   rm -rf /var/lib/apt/lists/*
 
-# install modern version of java
-RUN apt-get update \
-  && apt-get install --no-install-recommends -y openjdk-17-jdk openjdk-17-jre \
-  && apt-get clean && rm -rf /var/lib/apt/lists/*
-
 # install Chromium for (unit)-testing during build-phase
 RUN apt-get update && \
   apt-get install -y --no-install-recommends libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb && \
