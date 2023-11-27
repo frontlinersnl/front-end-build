@@ -37,9 +37,3 @@ then
       echo "@inforit-domain already registered"
   fi
 fi
-
-rm -rf "$DIST"
-
-npm ci
-npm run build:prod --if-present
-npm run zipdist --if-present

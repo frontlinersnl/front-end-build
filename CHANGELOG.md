@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.0.0] - 2023-11-27
+
+- Updated various internally used packages:
+  - Java from 11 to 17
+  - node version from 16 to 20
+  - other dependencies like sonar, python
+- Rename `Inforit` with `Frontliners`
+- Remove `npm ci`,  `npm run build:prod`,  `npm run test:prod`, `npm run zipdist` from build image
+
 ## [3.1.0] - 2023-03-31
 
 - Changed to normal node buster image instead of slim variant
