@@ -18,11 +18,11 @@ fi
 # Add myget npm source if access token is set
 if [ -n "$MYGET_ACCESS_TOKEN" ]
 then
-# check whether inforit scope exists, if not add it
-  if [[ $(cat ~/.npmrc | grep @inforit: | wc -l) -eq "0" ]]; then
-      echo -e "\n@inforit:registry=https://www.myget.org/F/inforit/npm/\n//www.myget.org/F/inforit/npm/:_authToken=$MYGET_ACCESS_TOKEN" >> ~/.npmrc
-      echo "@inforit scope sucesfully registered"
+# check whether Frontliners scope exists, if not add it
+  if [[ $(cat ~/.npmrc | grep @frontliners: | wc -l) -eq "0" ]]; then
+      echo -e "\n@frontliners:registry=https://www.myget.org/F/frontliners/npm/\n//www.myget.org/F/frontliners/npm/:_authToken=$MYGET_ACCESS_TOKEN" >> ~/.npmrc
+      echo "@frontliners scope sucesfully registered"
   else
-      echo "@inforit scope already registered"
+      echo "@frontliners scope already registered"
   fi
 fi
