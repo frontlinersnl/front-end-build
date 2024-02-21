@@ -1,6 +1,6 @@
 # bitbucket-pipelines front-end-build
 
-[![logo](./logo.jpg)](https://inforit.nl)
+[![logo](./logo.jpg)](https://frontliners.nl)
 
 Docker image to automate front-end builds on bitbucket (and local)
 
@@ -31,7 +31,7 @@ Also sonar-scanner is installed to enable sonar analyzing
 ## Usage
 
 ```sh
-image: inforitnl/front-end-build
+image: frontliners/front-end-build
 
 pipelines:
   default:
