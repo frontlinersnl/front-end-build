@@ -17,9 +17,9 @@ RUN apt-get update && \
   rm -rf /var/lib/apt/lists/*
 
 # install sonar-scanner
-ENV SONAR_VERSION="4.6.2.2472-linux"
-COPY sonar-scanner-cli-$SONAR_VERSION.zip /var/opt/
-RUN unzip /var/opt/sonar-scanner-cli-$SONAR_VERSION.zip -d /var/opt && \
+ENV SONAR_VERSION="5.0.1.3006-linux"
+RUN curl https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_VERSION.zip -o /var/opt/sonar-scanner-cli-$SONAR_VERSION.zip && \
+  unzip /var/opt/sonar-scanner-cli-$SONAR_VERSION.zip -d /var/opt && \
   rm /var/opt/sonar-scanner-cli-$SONAR_VERSION.zip
 ENV PATH="$PATH:/var/opt/sonar-scanner-$SONAR_VERSION/bin"
 
