@@ -5,7 +5,7 @@
 Docker image to automate front-end builds on bitbucket (and local)
 
 Comes preinstalled with Firefox and Chromium for (unit)-testing during build.
-Also sonar-scanner is installed to enable sonar analyzing 
+Also sonar-scanner is installed to enable sonar analyzing
 
 ## Instructions
 
