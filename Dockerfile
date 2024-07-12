@@ -47,11 +47,9 @@ RUN apt-get update && \
 RUN mkdir /code
 WORKDIR /code
 COPY entrypoint.sh /entrypoint.sh
-COPY front-end-build.sh /front-end-build.sh
 
 # set execute on the scripts
-RUN chmod +x /entrypoint.sh && \
-  chmod +x /front-end-build.sh
+RUN chmod +x /entrypoint.sh
 
 # start the build
 CMD [ "bash", "/entrypoint.sh" ]
