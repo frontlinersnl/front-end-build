@@ -1,32 +1,32 @@
 # bitbucket-pipelines front-end-build
 
-[![logo](./logo.jpg)](https://frontliners.nl)
+[![logo](./logo.png)](https://frontliners.nl)
 
 Docker image to automate front-end builds on bitbucket (and local)
 
 Comes preinstalled with Firefox and Chromium for (unit)-testing during build.
-Also sonar-scanner is installed to enable sonar analyzing 
+Also sonar-scanner is installed to enable sonar analyzing
 
 ## Instructions
 
 1. update dockerfile
 2. build local version:
 
-    ```sh
-    npm run build
-    ```
+   ```sh
+   npm run build
+   ```
 
 3. push new version to dockerhub:
 
-    ```sh
-    npm run push
-    ```
+   ```sh
+   npm run push
+   ```
 
 4. tag and push again (optional but recommended):
 
-    ```sh
-    npm run publish
-    ```
+   ```sh
+   npm run publish
+   ```
 
 ## Usage
 
