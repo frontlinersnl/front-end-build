@@ -10,7 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - node version from 16 to 20
   - other dependencies like sonar, python
 - Rename `Inforit` with `Frontliners`
-- Remove `npm ci`,  `npm run build:prod`,  `npm run test:prod`, `npm run zipdist` from build image
+- Remove `npm ci`, `npm run build:prod`, `npm run test:prod`, `npm run zipdist` from build image
+
+## [3.2.0] - 2024-02-21
+
+- Updated `SonarCloud` version
+- Partially renamed `Inforit` with `Frontliners` for docker and strings with no technical impact
 
 ## [3.1.0] - 2023-03-31
 
