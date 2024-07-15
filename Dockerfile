@@ -1,4 +1,4 @@
-FROM node:16.20.0-buster
+FROM node:20.10.0-bookworm
 
 # install build dependencies
 RUN apt-get update && \
@@ -28,18 +28,18 @@ RUN apt-get update && \
   apt-get install -y --no-install-recommends ca-certificates docker-compose gnupg2 pass && \
   rm -rf /var/lib/apt/lists/*
 
-# install python 3.10, link to python3 and install trcli
+# install python 3.12, link to python3 and install trcli
 RUN apt-get update && \
   apt-get install --no-install-recommends -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev && \
-  wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz && \
-  tar -xf Python-3.10.*.tgz && \
-  cd Python-3.10.*/ && \
+  wget https://www.python.org/ftp/python/3.12.0/Python-3.12.0.tgz && \
+  tar -xf Python-3.12.*.tgz && \
+  cd Python-3.12.*/ && \
   ./configure --enable-optimizations && \
   make -j 4 && \
   make altinstall && \
-  update-alternatives --install /usr/bin/python3 python3 /usr/local/bin/python3.10 1 && \
-  update-alternatives --install /usr/bin/pip3 pip3 /usr/local/bin/pip3.10 1 && \
-  cd .. && rm -rf Python-3.10* && \
+  update-alternatives --install /usr/bin/python3 python3 /usr/local/bin/python3.12 1 && \
+  update-alternatives --install /usr/bin/pip3 pip3 /usr/local/bin/pip3.12 1 && \
+  cd .. && rm -rf Python-3.12* && \
   pip3 install trcli && \
   rm -rf /var/lib/apt/lists/*
 
@@ -47,11 +47,9 @@ RUN apt-get update && \
 RUN mkdir /code
 WORKDIR /code
 COPY entrypoint.sh /entrypoint.sh
-COPY front-end-build.sh /front-end-build.sh
 
 # set execute on the scripts
-RUN chmod +x /entrypoint.sh && \
-  chmod +x /front-end-build.sh
+RUN chmod +x /entrypoint.sh
 
 # start the build
 CMD [ "bash", "/entrypoint.sh" ]
