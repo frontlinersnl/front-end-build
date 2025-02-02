@@ -1,4 +1,4 @@
-FROM node:20.14-bookworm
+FROM node:20.18.2-bookworm
 
 # install build dependencies
 RUN apt-get update && \
