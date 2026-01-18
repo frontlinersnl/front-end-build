@@ -1,4 +1,4 @@
-FROM node:24.11.0-bookworm
+FROM node:24.13.0-bookworm
 
 # install build dependencies
 RUN apt-get update && \
