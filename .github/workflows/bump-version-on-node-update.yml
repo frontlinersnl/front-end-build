@@ -1,0 +1,54 @@
+name: Bump package.json version on Dockerfile updates
+
+# When Dependabot opens a PR that updates the Node base image in the
+# Dockerfile, automatically bump the package.json version so the Docker
+# image published from main gets a fresh tag.
+
+on:
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+    paths:
+      - "Dockerfile"
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  bump-version:
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Check if Dockerfile Node base image changed
+        id: check
+        run: |
+          git fetch origin ${{ github.event.pull_request.base.ref }} --depth=1
+          if git diff origin/${{ github.event.pull_request.base.ref }}...HEAD -- Dockerfile | grep -E '^\+FROM\s+node:' > /dev/null; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Bump package.json patch version
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Avoid re-bumping if this workflow already pushed a version bump
+          LAST_MSG=$(git log -1 --pretty=%B)
+          if echo "$LAST_MSG" | grep -q "chore: bump version for Node update"; then
+            echo "Version already bumped on this PR, skipping."
+            exit 0
+          fi
+          npm version patch --no-git-tag-version
+          git add package.json package-lock.json 2>/dev/null || git add package.json
+          git commit -m "chore: bump version for Node update"
+          git push
