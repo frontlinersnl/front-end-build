@@ -1,5 +1,8 @@
 FROM node:24.11.0-bookworm
 
+# Upgrade npm to required version
+RUN npm install -g npm@11.6.3
+
 # install build dependencies
 RUN apt-get update && \
   apt-get install -y --no-install-recommends 'unzip' && \
